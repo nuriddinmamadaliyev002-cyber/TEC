@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today Education Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            color: #2c3e50;
+            font-size: 2.5em;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .header h1 img {
+            height: 80px;
+            width: auto;
+        }
+
+        .subtitle {
+            color: #34495e;
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        .course-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .course-section {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .course-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .english-header {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+
+        .korean-header {
+            background: linear-gradient(135deg, #fa709a, #fee140);
+        }
+
+        .math-header {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            color: #2c3e50;
+        }
+
+        .course-list {
+            padding: 0;
+        }
+
+        .course-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            transition: background 0.3s ease;
+        }
+
+        .course-item:last-child {
+            border-bottom: none;
+        }
+
+        .course-item:hover {
+            background: linear-gradient(135deg, #f8f9ff, #e8f4fd);
+        }
+
+        .course-name {
+            font-weight: 600;
+            color: #34495e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .course-price {
+            font-weight: 700;
+            color: #e74c3c;
+            font-size: 1.1em;
+        }
+
+        .course-price::after {
+            content: ' so\'m';
+            font-size: 0.9em;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .special-price {
+            font-weight: 800;
+            color: #e74c3c;
+            font-size: 1.2em;
+        }
+
+        .special-price::after {
+            content: ' $';
+            font-size: 0.9em;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .highlight-item {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border-left: 4px solid #f39c12;
+        }
+
+        .it-section {
+            grid-column: span 3;
+            max-width: 400px;
+            margin: 20px auto 0;
+        }
+
+        .it-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .note {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+            font-weight: 500;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .course-sections {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .header h1 img {
+                height: 60px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .course-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .it-section {
+                grid-column: span 1;
+            }
+        }
+
+        .section-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                <img src="Todaylogo.png" alt="Today Education Center Logo">
+                Today Education Center 
+            </h1>
+            <div class="subtitle">2025-26-yil uchun yangilangan kurs narxlari</div>
+        </div>
+
+        <div class="course-sections">
+            <!-- Ingliz tili bo'limi -->
+            <div class="course-section">
+                <div class="section-header english-header">
+                    <span class="section-icon">🇬🇧</span>
+                    INGLIZ TILI
+                </div>
+                <div class="course-list">
+                    <div class="course-item">
+                        <div class="course-name">📝 A1 (Beginner)</div>
+                        <div class="course-price">250,000</div>
+                    </div>
+                    <div class="course-item">
+                        <div class="course-name">📝 A2 (Elementary)</div>
+                        <div class="course-price">280,000</div>
+                    </div>
+                    <div class="course-item">
+                        <div class="course-name">📝 B1 (Intermediate)</div>
+                        <div class="course-price">310,000</div>
+                    </div>
+                    <div class="course-item">
+                        <div class="course-name">📝 B2 (Upper-Intermediate)</div>
+                        <div class="course-price">330,000</div>
+                    </div>
+                    <div class="course-item">
+                        <div class="course-name">📝 C1 (Advanced)</div>
+                        <div class="course-price">350,000</div>
+                    </div>
+                    <div class="course-item">
+                        <div class="course-name">👥 Multi level</div>
+                        <div class="course-price">350,000</div>
+                    </div>
+                    <div class="course-item">
+                        <div class="course-name">🏆 IELTS</div>
+                        <div class="course-price">350,000</div>
+                    </div>
+                    <div class="course-item highlight-item">
+                        <div class="course-name">👤 Individual</div>
+                        <div class="special-price">100</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Koreys tili bo'limi -->
+            <div class="course-section">
+                <div class="section-header korean-header">
+                    <span class="section-icon">🇰🇷</span>
+                    KOREYS TILI
+                </div>
+                <div class="course-list">
+                    <div class="course-item">
+                        <div class="course-name">📝 1A-1B</div>
+                        <div class="course-price">250,000</div>
+                    </div>
+                    <div class="course-item">
+                        <div class="course-name">📝 2A-2B</div>
+                        <div class="course-price">280,000</div>
+                    </div>
+                    <div class="course-item">
+                        <div class="course-name">📝 3A-3B</div>
+                        <div class="course-price">300,000</div>
+                    </div>
+                    <div class="course-item">
+                        <div class="course-name">📝 4A-4B</div>
+                        <div class="course-price">350,000</div>
+                    </div>
+                    <div class="course-item">
+                        <div class="course-name">📚 Topik 1</div>
+                        <div class="course-price">300,000</div>
+                    </div>
+                    <div class="course-item highlight-item">
+                        <div class="course-name">📚 Topik 2</div>
+                        <div class="course-price">350,000</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Matematika bo'limi -->
+            <div class="course-section">
+                <div class="section-header math-header">
+                    <span class="section-icon">🔢</span>
+                    MATEMATIKA
+                </div>
+                <div class="course-list">
+                    <div class="course-item">
+                        <div class="course-name">👶 1-3 sinflar</div>
+                        <div class="course-price">300,000</div>
+                    </div>
+                    <div class="course-item highlight-item">
+                        <div class="course-name">🎓 PIMA AL-XORAZMIY Matematika Ingliz tili</div>
+                        <div class="course-price">500,000</div>
+                    </div>
+                    <div class="course-item">
+                        <div class="course-name">🧮 5-11 sinflar</div>
+                        <div class="course-price">300,000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- IT bo'limi -->
+        <div class="course-section it-section">
+            <div class="section-header it-header">
+                <span class="section-icon">💻</span>
+                IT
+            </div>
+            <div class="course-list">
+                <div class="course-item">
+                    <div class="course-name">👨‍💻 5-11 sinflar</div>
+                    <div class="course-price">300,000</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="note">
+            <strong>⚠️ DIQQAT!</strong> Koreys tili uchun har kunlik darslar: 600,000 so'm/oy (Topik 1), 700,000 so'm/oy (Topik 2)
+        </div>
+    </div>
+</body>
+</html>
